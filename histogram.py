@@ -8,7 +8,7 @@ import re
 word_count = 15
 
 # Use the correct path separator for the file path
-dataset = pd.read_csv(r"C:\Users\JASON MAVERICK\Downloads\data.csv")
+dataset = pd.read_csv(r"data.csv")
 
 stop_words = [
     'i', 'me', 'my', 'myself', 'we', 'our', 'ours', 'ourselves', 'you', "you're",
@@ -41,7 +41,7 @@ stop_words = [
 
 all_words = []
 for index, data in dataset.iterrows():
-    words = str(data.comment).split()
+    words = str(data.comments).split()
     for w in words:
         temp_word = w.lower()
         temp_word = temp_word.encode('ascii', 'ignore').decode('ascii')
@@ -58,6 +58,6 @@ freq_doctor = FreqDist(all_words)
 new_dataframe = new_dataframe[:word_count]
 sns.barplot(x=new_dataframe.values, y=new_dataframe.index)
 plt.title('Most Frequent Word')
-plt.xlabel('Word')
-plt.ylabel('Frequency')
+plt.ylabel('Word')
+plt.xlabel('Frequency')
 plt.show()
